@@ -1,0 +1,90 @@
+#!/bin/bash
+
+seed=1
+
+### 2/255 < 0.00784314
+
+### TAPS train
+
+# CUDA_VISIBLE_DEVICES=1 python mix_train.py \
+#        --dataset cifar10 --fast-reg --init fast --random-seed $seed \
+#        --net cnn_7layer_bn \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 121 141 \
+#        --train-eps 0.00784314  --train-steps 20 --test-steps 20  \
+#        --train-batch 128 --test-batch 128  \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 161 --start-epoch-eps 1 --end-epoch-eps 81 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.5 \
+#        --alpha-box 5  \
+#        --L1-reg 2e-6 \
+#        --save-dir ./models/seed_$seed \
+#        --block-sizes 4 17
+
+### STAPS train
+
+# CUDA_VISIBLE_DEVICES=7 python mix_train.py \
+#        --dataset cifar10 --fast-reg --init fast --use-small-box --eps-shrinkage 0.1 --relu-shrinkage 0.2 --random-seed $seed \
+#        --net cnn_7layer_bn \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 121 141 \
+#        --train-eps 0.00784314  --train-steps 20 --test-steps 20  \
+#        --train-batch 128 --test-batch 128  \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 161 --start-epoch-eps 1 --end-epoch-eps 81 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.5 \
+#        --alpha-box 2  \
+#        --L1-reg 2e-6 \
+#        --save-dir ./models/seed_$seed \
+#        --block-sizes 17 4
+
+
+# 8/255 < 0.03137255
+
+### TAPS train
+
+# CUDA_VISIBLE_DEVICES=3 python mix_train.py \
+#        --dataset cifar10 --fast-reg  --init fast --random-seed $seed \
+#        --net cnn_7layer_bn \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 121 141 \
+#        --train-eps 0.03137255  --train-steps 20 --test-steps 20  \
+#        --train-batch 128 --test-batch 128  \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 161 --start-epoch-eps 1 --end-epoch-eps 81 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.5 \
+#        --alpha-box 5  \
+#        --L1-reg 2e-6 \
+#        --save-dir ./models/seed_$seed/ \
+#        --block-sizes 17 4
+
+
+### STAPS train
+
+# CUDA_VISIBLE_DEVICES=5 python mix_train.py \
+#        --dataset cifar10 --fast-reg  --init fast --use-small-box --eps-shrinkage 0.7 --random-seed $seed \
+#        --net cnn_7layer_bn \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 121 141 \
+#        --train-eps 0.03137255  --train-steps 20 --test-steps 20  \
+#        --train-batch 128 --test-batch 128  \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 161 --start-epoch-eps 1 --end-epoch-eps 81 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.5 \
+#        --alpha-box 5  \
+#        --L1-reg 2e-6 \
+#        --save-dir ./models/seed_$seed/ \
+#        --block-sizes 17 4
+

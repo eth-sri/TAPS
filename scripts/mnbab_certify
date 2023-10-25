@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# CUDA_VISIBLE_DEVICES=0 python3 mnbab_certify.py \
+#        --dataset mnist --mode certify  \
+#        --net cnn_7layer_bn \
+#        --no-aneal \
+#        --cert-weight 1  \
+#        --load-model your-model-path-here \
+#        --test-eps 0.1 --test-steps 200 \
+#        --train-batch 1 --test-batch 20 \
+#        --mnbab-config ../TAPS-master/MNBAB_configs/mnist_eps0.1.json
+
+# CUDA_VISIBLE_DEVICES=0 python3 mnbab_certify.py \
+#        --dataset mnist --mode certify  \
+#        --net cnn_7layer_bn \
+#        --no-aneal \
+#        --cert-weight 1  \
+#        --load-model your-model-path-here \
+#        --test-eps 0.3 --test-steps 200 \
+#        --train-batch 1 --test-batch 20 \
+#        --mnbab-config ../TAPS-master/MNBAB_configs/mnist_eps0.3.json
+
+# CUDA_VISIBLE_DEVICES=0 python3 mnbab_certify.py \
+#        --dataset cifar10 --mode certify  \
+#        --net cnn_7layer_bn \
+#        --no-aneal \
+#        --cert-weight 1  \
+#        --load-model your-model-path-here \
+#        --test-eps 0.00784313725 --test-steps 200 \
+#        --train-batch 1 --test-batch 10 \
+#        --mnbab-config ../TAPS-master/MNBAB_configs/cifar10_small_eps.json
+
+# CUDA_VISIBLE_DEVICES=0 python3 mnbab_certify.py \
+#        --dataset cifar10 --mode certify  \
+#        --net cnn_7layer_bn \
+#        --no-aneal \
+#        --cert-weight 1  \
+#        --load-model your-model-path-here \
+#        --test-eps 0.03137254901 --test-steps 200 \
+#        --train-batch 1 --test-batch 10 \
+#        --mnbab-config ../TAPS-master/MNBAB_configs/cifar10_large_eps.json
+
+# # need to copy the tinyimagenet into the data dir of MN-Bab
+# CUDA_VISIBLE_DEVICES=3 python3 mnbab_certify.py \
+#        --dataset tinyimagenet --mode certify  \
+#        --net cnn_7layer_bn_tinyimagenet \
+#        --no-aneal \
+#        --cert-weight 1  \
+#        --load-model your-model-path-here \
+#        --test-eps 0.00392157 --test-steps 200 \
+#        --train-batch 1 --test-batch 10 \
+#        --block-size 12 3  \
+#        --mnbab-config ../TAPS-master/MNBAB_configs/tin.json

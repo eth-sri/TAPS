@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CUDA_VISIBLE_DEVICES=2 python train_quality_measure.py \
+       --dataset mnist --fast-reg --init fast \
+       --net cnn_7layer_bn \
+       --cert-weight 1 \
+       --lr 0.0005 --L2-reg 0 --lr-milestones 50 60 \
+       --train-eps 0.4 --test-eps 0.3  --train-steps 20 --test-steps 20  \
+       --train-batch 256 --test-batch 256 \
+       --pgd-weight-start 1 --pgd-weight-end 1 \
+       --grad-clip 10 \
+       --n-epochs 70 --start-epoch-eps 0 --end-epoch-eps 20 \
+       --min-eps-pgd 0 \
+       --soft-thre 0.5 \
+       --alpha-box 20 --L1-reg 0 \
+       --save-dir ./alpha_models/ \
+       --block-sizes 13 8

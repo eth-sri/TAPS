@@ -1,0 +1,45 @@
+#!/bin/bash
+
+seed=1
+
+# 1/255 < 0.00392156863
+
+### TAPS train
+
+# CUDA_VISIBLE_DEVICES=1 python mix_train.py \
+#        --dataset tinyimagenet --init fast --fast-reg --random-seed $seed \
+#        --net cnn_7layer_bn_tinyimagenet \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 60 70 \
+#        --train-eps 0.00392156863  --train-steps 20 --test-steps 20  \
+#        --train-batch 128 --test-batch 128 --estimation-batch 64 \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 80 --start-epoch-eps 1 --end-epoch-eps 21 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.1  \
+#        --alpha-box 5  \
+#        --save-dir ./models/seed_$seed \
+#        --block-sizes 17 4
+
+
+### STAPS train
+
+# CUDA_VISIBLE_DEVICES=3 python mix_train.py \
+#        --dataset tinyimagenet  --init fast --fast-reg --use-small-box --eps-shrinkage 0.6 \
+#        --net cnn_7layer_bn_tinyimagenet --random-seed $seed \
+#        --cert-weight 1 \
+#        --lr 0.0005 --L2-reg 0 --lr-milestones 60 70 \
+#        --train-eps 0.00392156863  --train-steps 10 --test-steps 10  \
+#        --train-batch 128 --test-batch 128  --estimation-batch 64 \
+#        --pgd-weight-start 1 --pgd-weight-end 1 \
+#        --grad-clip 10 \
+#        --n-epochs 80 --start-epoch-eps 1 --end-epoch-eps 21 \
+#        --soft-thre 0.5 \
+#        --min-eps-pgd 0 \
+#        --reg-lambda 0.1  \
+#        --alpha-box 5  \
+#        --L1-reg 1e-6 \
+#        --save-dir ./models/seed_$seed \
+#        --block-sizes 17 4
